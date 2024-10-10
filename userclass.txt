@@ -1,0 +1,38 @@
+public class User {
+    private String name;
+    private int borrowedBooksCount;
+
+    // Constructor
+    public User(String name) {
+        this.name = name;
+        this.borrowedBooksCount = 0;     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getBorrowedBooksCount() {
+        return borrowedBooksCount;
+    }
+
+    public void setBorrowedBooksCount(int borrowedBooksCount) {
+        this.borrowedBooksCount = borrowedBooksCount;
+    }
+
+    public void borrowBook() {
+        borrowedBooksCount++;
+    }
+
+    public void returnBook() {
+        if (borrowedBooksCount > 0) {
+            borrowedBooksCount--;
+        } else {
+            System.out.println(name + " has no borrowed books to return.");
+        }
+    }
+
+      public void displayUserInfo() {
+        System.out.println("User Name: " + name);
+        System.out.println("Borrowed Books Count: " + borrowedBooksCount);
+    }
+}
