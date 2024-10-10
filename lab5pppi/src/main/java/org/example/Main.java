@@ -156,19 +156,38 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    // Додавання книги (реалізація буде додана іншим учасником)
+                    System.out.print("Enter book title: ");
+                    String title = scanner.nextLine();
+                    System.out.print("Enter author: ");
+                    String author = scanner.nextLine();
+                    System.out.print("Enter year: ");
+                    int year = scanner.nextInt();
+                    library.addBook(new Book(title, author, year));
                     break;
                 case 2:
-                    // Відображення книг (реалізація буде додана іншим учасником)
+                    library.displayBooks();
                     break;
                 case 3:
-                    // Пошук книги (реалізація буде додана іншим учасником)
+                    System.out.print("Enter book title: ");
+                    title = scanner.nextLine();
+                    Book book = library.searchBookByTitle(title);
+                    if (book != null) {
+                    book.displayInfo();
+                    } else {System.out.println("Book not found.");
+                    }
                     break;
                 case 4:
-                    // Видача книги (реалізація буде додана іншим учасником)
+                     System.out.print("Enter book title: ");
+                     title = scanner.nextLine();
+                     if (library.borrowBook(title)) {
+                     user.borrowBook();
                     break;
                 case 5:
-                    // Повернення книги (реалізація буде додана іншим учасником)
+                    System.out.print("Enter book title: ");
+                    title = scanner.nextLine();
+                    if (library.returnBook(title)) {
+                    user.returnBook(); // Зменшення кількості книг, взятих користувачем
+                    }
                     break;
                 case 6:
                     System.out.println("Exiting the system.");
