@@ -10,15 +10,14 @@ public class Main {
         private int year;
         private boolean isAvailable;
 
-        // Конструктор
         public Book(String title, String author, int year) {
             this.title = title;
             this.author = author;
             this.year = year;
-            this.isAvailable = true;  // За замовчуванням книга доступна
+            this.isAvailable = true;
         }
 
-        // Геттери і сеттери
+
         public String getTitle() {
             return title;
         }
@@ -39,9 +38,12 @@ public class Main {
             this.isAvailable = isAvailable;
         }
 
-        // Метод для відображення інформації про книгу (реалізує учасник команди)
+
         public void displayInfo() {
-            // Реалізація буде додана іншим учасником
+            System.out.println("Title: " + title);
+            System.out.println("Author: " + author);
+            System.out.println("Year: " + year);
+            System.out.println("Available: " + (isAvailable ? "Yes" : "No"));
         }
     }
 
@@ -49,37 +51,59 @@ public class Main {
     public static class Library {
         private ArrayList<Book> books;
 
-        // Конструктор
+
     public Library() {
             books = new ArrayList<>();
         }
 
-        // Метод для додавання книги до бібліотеки
         public void addBook(Book book) {
-            // Реалізація буде додана іншим учасником
+            books.add(book);
+            System.out.println("Book added: " + book.getTitle());
         }
 
-        // Метод для відображення всіх книг у бібліотеці
         public void displayBooks() {
-            // Реалізація буде додана іншим учасником
+            if (books.isEmpty()) {
+                System.out.println("No books in the library.");
+            } else {
+                for (Book book : books) {
+                    book.displayInfo();
+                    System.out.println();
+                }
+            }
         }
 
-        // Метод для пошуку книги за назвою
         public Book searchBookByTitle(String title) {
-            // Реалізація буде додана іншим учасником
+            for (Book book : books) {
+                if (book.getTitle().equalsIgnoreCase(title)) {
+                    return book;
+                }
+            }
             return null;
         }
 
-        // Метод для видачі книги користувачу
         public boolean borrowBook(String title) {
-            // Реалізація буде додана іншим учасником
-            return false;
+            Book book = searchBookByTitle(title);
+            if (book != null && book.isAvailable()) {
+                book.setAvailable(false);
+                System.out.println("You borrowed: " + book.getTitle());
+                return true;
+            } else {
+                System.out.println("Book is not available.");
+                return false;
+            }
         }
 
         // Метод для повернення книги до бібліотеки
         public boolean returnBook(String title) {
-            // Реалізація буде додана іншим учасником
-            return false;
+            Book book = searchBookByTitle(title);
+            if (book != null && !book.isAvailable()) {
+                book.setAvailable(true);
+                System.out.println("You returned: " + book.getTitle());
+                return true;
+            } else {
+                System.out.println("Book was not borrowed.");
+                return false;
+            }
         }
     }
 
