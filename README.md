@@ -4,4 +4,7 @@ Nastya is the team lead. Nastya, Sonya and Vanya will work on separated branches
 Hello!
 #Nastya's commit.
 I have added the realization of some methods in class book and library
+It was easy
+#hello
 #It was quite easy!
+
