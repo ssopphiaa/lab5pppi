@@ -129,13 +129,21 @@ public class Main {
         public void setBorrowedBooksCount(int borrowedBooksCount) {
             this.borrowedBooksCount = borrowedBooksCount;
         }
-
-        // Метод для відображення інформації про користувача
+        public void borrowBook() {
+            borrowedBooksCount++;
+        }
+        public void returnBook() {
+            if (borrowedBooksCount > 0) {
+                borrowedBooksCount--;
+            } else {
+                System.out.println(name + " has no borrowed books to return.");
+            }
+        }
         public void displayUserInfo() {
-            // Реалізація буде додана іншим учасником
+            System.out.println("User Name: " + name);
+            System.out.println("Borrowed Books Count: " + borrowedBooksCount);
         }
     }
-
 
     public static void main(String[] args) {
         Library library = new Library();
