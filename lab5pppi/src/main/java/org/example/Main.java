@@ -111,13 +111,11 @@ public class Main {
         private String name;
         private int borrowedBooksCount;
 
-        // Конструктор
         public User(String name) {
             this.name = name;
             this.borrowedBooksCount = 0;
         }
 
-        // Геттери і сеттери
         public String getName() {
             return name;
         }
@@ -130,9 +128,21 @@ public class Main {
             this.borrowedBooksCount = borrowedBooksCount;
         }
 
-        // Метод для відображення інформації про користувача
+        public void borrowBook() {
+            borrowedBooksCount++;
+        }
+
+        public void returnBook() {
+            if (borrowedBooksCount > 0) {
+                borrowedBooksCount--;
+            } else {
+                System.out.println(name + " has no borrowed books to return.");
+            }
+        }
+
         public void displayUserInfo() {
-            // Реалізація буде додана іншим учасником
+            System.out.println("User Name: " + name);
+            System.out.println("Borrowed Books Count: " + borrowedBooksCount);
         }
     }
 
@@ -152,7 +162,7 @@ public class Main {
             System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
-            scanner.nextLine();  // Очищення буфера
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -186,7 +196,7 @@ public class Main {
                     System.out.print("Enter book title: ");
                     title = scanner.nextLine();
                     if (library.returnBook(title)) {
-                    user.returnBook(); // Зменшення кількості книг, взятих користувачем
+                    user.returnBook(); 
                     }
                     break;
                 case 6:
